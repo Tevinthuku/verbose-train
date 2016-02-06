@@ -1,0 +1,49 @@
+<template name="timetable">
+    
+<a href="{{pathFor route="login"}}">
+  <button class="ui teal right basic floated button">Home</button>
+</a>  
+<a href="{{pathFor route="messages"}}">
+  <button class="ui brown basic left floated button">Messages</button>
+</a>  
+
+<div class="ui feed">
+    {{#each timetable}}
+      <div class="event">
+          
+        <div class="label">
+            <i class="terminal icon"></i>
+        </div>
+        <div class="content">
+          <div class="date">
+            {{#if isOwner}}
+               <a href="{{pathFor route="update"}}">{{day}}</a>
+                
+            {{else}}
+                
+               {{day}}
+               
+            {{/if}}
+           
+          </div>
+          <div class="summary">
+             <p>{{description}}</p>
+             <br />
+             {{#each lectures}}
+                <p>{{unit}} Class starts at <a>{{timeStart}}</a> to <a>{{timeEnd}}</a> @ <a>{{room}}</a></p>
+                <br />
+            {{/each}}
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- the divider-->
+    <h4 class="ui horizontal divider header">
+      <i class="signal icon"></i>
+      Previous Day
+    </h4>
+      
+    {{/each}}  
+</div>
+</template>

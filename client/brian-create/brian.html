@@ -1,0 +1,38 @@
+<template name="brian">
+    
+  {{#if isInRole 'admin'}}        
+<a href="{{pathFor route="login"}}">
+  <button class="ui teal right basic floated button">Home</button>
+</a>  
+<a href="{{pathFor route="messages"}}">
+  <button class="ui brown basic left floated button">Messages</button>
+</a>  
+
+
+<div style="position:relative; top: 150px">
+   {{#autoForm collection="Timetable" id="quickstring" type="insert"}}
+  
+      <div class="ui transparent fluid input">
+           {{> afQuickField name="day"}}
+      </div>   
+      <br />
+    <div class="ui transparent fluid input">
+           {{> afQuickField name="description"}}
+    </div>   
+      <br />
+    
+    <div class="ui transparent fluid input" style="background-color:white;">
+           {{> afQuickField name="lectures"}}
+    </div>   
+    <br />
+    
+       <!-- the syubmit button-->
+     <button type="submit" class="fluid ui swipe-control teal to_timetableprivate button">Submit</button>
+  {{/autoForm}} 
+</div> 
+
+{{else}}
+
+{{> login}}
+{{/if}}
+</template>
