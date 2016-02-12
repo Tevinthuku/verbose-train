@@ -1,7 +1,7 @@
 // the template  helpers for the messages template
-Template.messages.helpers({
-   'messages': function(){
-       return Messages.find({}, {sort: {day : -1}});
+Template.viewnotes.helpers({
+   'notes': function(){
+       return Notes.find({}, {sort: {day : -1}});
     },
 
     
@@ -13,13 +13,9 @@ Template.messages.helpers({
 
 // the messages on created template
 
-Template.messages.onCreated(function() {
+Template.viewnotes.onCreated(function() {
    var self = this;
    self.autorun(function(){
-       self.subscribe('messages');
+       self.subscribe('notes');
    });
 });
-
-
-
-

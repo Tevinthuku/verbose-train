@@ -1,66 +1,64 @@
 <template name="messages">
-<a href="{{pathFor route="create"}}">
-  <button class="ui teal right basic floated button">create</button>
-</a>  
-<a href="{{pathFor route="login"}}">
-  <button class="ui brown basic left floated button">Home</button>
-</a>  
+ 
+  
+  
 
-  <div class="ui feed">
-  {{#each messages}}
-  <div class="event">
-            <div class="label">
-                <!--- different icons for different pple that are posting the post-->
-                {{#if isOwner}}
-                <i class="spy icon"></i>
-                
-                {{else}}
-                
-                <i class="angellist icon"></i>
-                {{/if}}
-              
-            </div>
-            <div class="content">
-              <div class="summary">
-                {{#if isOwner}} <a>You</a> have {{else}}  <a>{{email}}</a> has {{/if}} posted on this page
-                <div class="date">
-                  {{time}}
+  <div style="height:auto">
+    {{#each messages}}
+            <div class="row">
+              <div class="col s10 m6 {{#if isOwner}} right {{else}} left {{/if}}">
+                <div class="card {{#if isOwner}}cyan {{else}} teal {{/if}} ">
+                  <div class="card-content white-text">
+                    <span class="card-title truncate">{{#if isOwner}} Me  {{else}} {{email}} {{/if}}</span>
+                    <p>{{message}}</p>
+                  </div>
+                  <div class="card-action">
+                    <a class="white-text" href="#">{{time}}</a>
+                  </div>
                 </div>
               </div>
-              <div class="extra text">
-                  {{message}}
-              </div>
-            </div>
-          </div>  
+            </div>  
+       {{/each}} 
+  </div>  
 
+      
+      
                 <!-- the divider-->
-    <h4 class="ui horizontal divider header">
-      <i class="comment outline icon"></i>
-      Previous Chats
-    </h4>
-  {{/each}}    
-</div>
+    <!--<h4 class="ui horizontal divider header">-->
+    <!--  <i class="comment outline icon"></i>-->
+    <!--  Previous Chats-->
+    <!--</h4>-->
+    
 
-
-
-
-
-
+<!-- the paper fab-->
+<a href="{{pathFor route="create"}}" class="btn-floating btn-large waves-effect waves-light blue darken-4" style="position: fixed; bottom:40px; right:10px"><i class="mdi-content-create"></i></a>
 
 </template>
 <!--create the message-->
 <template name="create">
 
-<div style="position:relative; top: 150px">
+{{#if currentUser}}
+
+<h5 class="flow-text center-align">Create a message</h5>
+
+{{else}}
+
+<h5 class="flow-text center-align">Login to create a message</h5>
+
+{{/if}}
+
    {{#autoForm collection="Messages" id="add-message-form" type="insert"}}
   
-      <div class="ui transparent fluid input">
+      
            {{> afQuickField name="message"}}
-      </div>   
-      <br />
+       
+
        <!-- the syubmit button-->
-       <button type="submit" class="fluid ui swipe-control teal to_submit button">Submit</button>
+  
+  <button class="btn waves-effect waves-light to_submit blue lighten-1" type="submit" name="action">Submit
+    <i class="mdi-content-send right"></i>
+  </button>
   {{/autoForm}} 
-</div>    
+   
 
 </template>

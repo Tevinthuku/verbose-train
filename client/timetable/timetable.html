@@ -1,49 +1,58 @@
 <template name="timetable">
     
-<a href="{{pathFor route="login"}}">
-  <button class="ui teal right basic floated button">Home</button>
-</a>  
-<a href="{{pathFor route="messages"}}">
-  <button class="ui brown basic left floated button">Messages</button>
-</a>  
 
-<div class="ui feed">
-    {{#each timetable}}
-      <div class="event">
-          
-        <div class="label">
-            <i class="terminal icon"></i>
-        </div>
-        <div class="content">
-          <div class="date">
-            {{#if isOwner}}
-               <a href="{{pathFor route="update"}}">{{day}}</a>
-                
-            {{else}}
-                
-               {{day}}
-               
-            {{/if}}
-           
-          </div>
-          <div class="summary">
-             <p>{{description}}</p>
-             <br />
-             {{#each lectures}}
-                <p>{{unit}} Class starts at <a>{{timeStart}}</a> to <a>{{timeEnd}}</a> @ <a>{{room}}</a></p>
-                <br />
-            {{/each}}
-          </div>
-        </div>
-        
-      </div>
+
+ <div class="heighty">
+   
+           <div class="row">
+                {{#each timetable}}
+              <div class="col s12 m6">
+                     <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="/office.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4">{{day}}<i class="mdi-image-blur-on secondary-content right"></i></span>
+                          {{#if isOwner}}  
+                          <p><a href="{{pathFor route="update"}}">Update</a></p>
+                          {{/if}}
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">{{day}}<i class="material-icons right">close</i></span>
+                           <p>{{description}}</p>
+                           
+                            <table>
+                                    <thead>
+                                      <tr>
+                                          <th data-field="id">Unit</th>
+                                          <th data-field="name">Start</th>
+                                          <th data-field="price">End</th>
+                                          <th data-field="location">Location</th>
+                                      </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                    {{#each lectures}}  
+                                      <tr>
+                                        <td>{{unit}}</td>
+                                        <td>{{timeStart}}</td>
+                                        <td>{{timeEnd}}</td>
+                                        <td>{{room}}</td>
+                                      </tr>
+                                    {{/each}}  
+                                    </tbody>
+                                  </table>
+                        </div>
+                      </div>
+              </div>
+                   {{/each}}  
+        </div>    
+   
+ </div>
+
+
       
-      <!-- the divider-->
-    <h4 class="ui horizontal divider header">
-      <i class="signal icon"></i>
-      Previous Day
-    </h4>
-      
-    {{/each}}  
-</div>
+
+  
 </template>
+

@@ -1,0 +1,54 @@
+<template name="notescreate">
+      {{#if isInRole 'admin'}}        
+
+
+
+
+   {{#autoForm collection="Notes" id="add-notes-form" type="insert"}}
+  
+
+           {{> afQuickField name="header"}}
+
+
+           {{> afQuickField name="description"}}
+
+    
+
+           {{> afQuickField name="link"}}
+
+    
+       <!-- the syubmit button-->
+              <button class="btn waves-effect waves-light to_submit blue lighten-1" type="submit" name="action">Submit
+                  <i class="mdi-content-send right"></i>
+              </button>
+  {{/autoForm}} 
+
+
+{{else}}
+
+{{> login}}
+{{/if}}
+</template>
+
+
+<template name="updatenotes">
+    
+   {{#autoForm collection="Notes" id="add-notes-form" type="update" doc=this}}
+  
+
+           {{> afQuickField name="header"}}
+
+
+           {{> afQuickField name="description"}}
+
+    
+
+           {{> afQuickField name="link"}}
+
+    
+       <!-- the syubmit button-->
+              <button class="btn waves-effect waves-light to_submit blue lighten-1" type="submit" name="action">Submit
+                    <i class="mdi-content-send right"></i>
+              </button>
+  {{/autoForm}} 
+</template>

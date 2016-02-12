@@ -14,21 +14,41 @@ Timetable.allow({
 
 // array of characteristics
 LectureSchema = new SimpleSchema({
+    
     unit: {
         type: String,
+        autoform: {
+          icon: "code"  
+        }
+        
         
     },
     
     timeStart: {
         type: String,
+        autoform:{
+            
+        icon: "access_time" 
+        
+        }
+
     },
     
     timeEnd: {
         type: String,
+        
+        autoform: {
+             icon: "access_time"     
+        }
+  
     },
     
     room: {
         type: String,
+        autoform: {
+        icon: "airline_seat_legroom_reduced"            
+        }
+
     }
     
 });
@@ -37,19 +57,29 @@ LectureSchema = new SimpleSchema({
 TimetableSchema = new SimpleSchema({
     day: {
         type: String,
+        
+        autoform: {
+            
+        icon: "today"
+        
+        }
+
 
     },
     
     description: {
         type: String,
         autoform: {
+            
+            icon: "description"
 
         },
     },
     
     
     lectures: {
-        type: [LectureSchema]
+        type: [LectureSchema],
+        
     },
     
     userIntel: {

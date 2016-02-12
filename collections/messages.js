@@ -23,6 +23,7 @@ MessagesSchema = new SimpleSchema({
         
         autoform: {
             placeholder: "Type Message",
+            icon: "chat_bubble"
             
         }
     },
